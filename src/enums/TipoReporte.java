@@ -1,0 +1,8 @@
+package enums;
+
+public enum TipoReporte {
+    TICKETS_POR_PERIODO,
+    TICKETS_POR_DESARROLLADOR,
+    TICKETS_POR_INCIDENCIA,
+    RENDIMIENTO_GENERAL
+}
