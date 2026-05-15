@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) {
         UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
-        Usuario usuario = 
+        // Usuario usuario = 
         try {
 
         } catch (Exception e) {

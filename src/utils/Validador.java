@@ -1,4 +1,5 @@
 package utils;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Validador {
@@ -43,8 +44,8 @@ public class Validador {
         }
     }
 
-    public static Date fechaNoNula(Date valor, String campo) {
+    public static LocalDateTime fechaNoNula(LocalDateTime valor, String campo) {
         noNulo(valor, campo);
-        return new Date(valor.getTime());
+        return valor;
     }
 }

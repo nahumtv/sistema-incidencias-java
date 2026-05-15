@@ -22,19 +22,19 @@ public class UsuarioATC extends Usuario {
         this.ticketsRegistrados = new ArrayList<>();
     }
 
-    public Ticket registrarTicket(Incidencia incidencia, String descripcion, NivelSeveridad severidad) {
-        Validador.noNulo(incidencia, "incidencia");
-        Ticket ticket = new Ticket(++secuenciaTicket, descripcion, severidad, "no-especificada", "no-especificado", incidencia);
-        ticketsRegistrados.add(ticket);
-        totalTicketsRegistrados = ticketsRegistrados.size();
-        incidencia.incrementarFrecuencia();
-        return ticket;
-    }
+    // public Ticket registrarTicket(Incidencia incidencia, String descripcion, NivelSeveridad severidad) {
+    //     Validador.noNulo(incidencia, "incidencia");
+    //     // Ticket ticket = new Ticket(++secuenciaTicket, descripcion, severidad, "no-especificada", "no-especificado", incidencia);
+    //     // ticketsRegistrados.add(ticket);
+    //     totalTicketsRegistrados = ticketsRegistrados.size();
+    //     incidencia.incrementarFrecuencia();
+    //     return ticket;
+    // }
 
     public void asignarTicket(Ticket ticket, Desarrollador desarrollador) {
         Validador.noNulo(ticket, "ticket");
         Validador.noNulo(desarrollador, "desarrollador");
-        ticket.asignarDesarrollador(desarrollador);
+        // ticket.asignarDesarrollador(desarrollador);
     }
 
     public String consultarEstadoTicket(int idTicket) {

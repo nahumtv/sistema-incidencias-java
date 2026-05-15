@@ -1,6 +1,7 @@
 package model;
 import java.util.ArrayList;
 
+import enums.EstadoTicket;
 import enums.RolUsuario;
 import utils.Validador;
 
@@ -20,7 +21,7 @@ public class Desarrollador extends Usuario {
 
     public void actualizarEstadoTicket(Ticket ticket, EstadoTicket nuevoEstado, String comentario) {
         validarTicketAsignado(ticket);
-        ticket.cambiarEstado(nuevoEstado, comentario);
+        ticket.setEstado(nuevoEstado);
     }
 
     public ArrayList<Ticket> listarTicketsAsignados() {
@@ -34,12 +35,12 @@ public class Desarrollador extends Usuario {
 
     public void marcarResuelto(Ticket ticket, String comentario) {
         validarTicketAsignado(ticket);
-        ticket.cambiarEstado(EstadoTicket.RESUELTO, comentario);
+        ticket.setEstado(EstadoTicket.RESUELTO);
     }
 
     private void validarTicketAsignado(Ticket ticket) {
         Validador.noNulo(ticket, "ticket");
-        if (ticket.getDesarrolladorAsignado() != this) {
+        if (ticket.getDesarrolladorId() != this.getId()) {
             throw new IllegalArgumentException("El ticket no esta asignado al desarrollador");
         }
     }
