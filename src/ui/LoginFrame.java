@@ -4,16 +4,21 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.util.Optional;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+
+import model.Usuario;
+import service.AuthService;
 
 // import dao.UsuarioDAO;
 // import dao.impl.UsuarioDAOImpl;
@@ -28,11 +33,10 @@ public class LoginFrame extends JFrame {
     private JButton btnLogin;
     private JButton btnLimpiar;
     private JLabel lblEstado;
-    // private UsuarioDAO usuarioDAO;
+    private AuthService authService;
 
     public LoginFrame() {
-
-        // usuarioDAO = new UsuarioDAOImpl();
+        authService = new AuthService();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
@@ -96,6 +100,8 @@ public class LoginFrame extends JFrame {
 
         btnLimpiar.addActionListener(e-> {
             lblEstado.setText("");
+            txtCorreo.setText("");
+            txtContrasena.setText("");
 
         });
 
@@ -108,13 +114,32 @@ public class LoginFrame extends JFrame {
                 lblEstado.setForeground(Color.RED);
                 return;
             }
+            try {
+                Optional<Usuario> opcionalUsuario = authService.login(correo, contrasena);
 
-            // Usuario usuario = usuarioDAO.buscarPorCorreo(correo);
-            // if (usuario == null) {
-            //     lblEstado.
-            // }
+                if(opcionalUsuario.isEmpty()) {
+                    lblEstado.setText("Usuario o contrasena incorrecto ");
+                    lblEstado.setForeground(Color.RED);
+                    return;
+                } 
+
+                lblEstado.setText("Listo !!");
+                lblEstado.setForeground(Color.GREEN);
+                Usuario usuario = opcionalUsuario.get();
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Bienvenido " + usuario.getNombre()
+                );
+
+                dispose();
+
+                new DashboardFrame(usuario);
 
 
+            } catch (Exception ex) {
+                System.out.print("Error en inicio de sesion => " + ex.getMessage());
+            }
         });
 
         setVisible(true);

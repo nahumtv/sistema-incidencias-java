@@ -4,11 +4,13 @@ import dao.UsuarioDAO;
 import dao.impl.UsuarioDAOImpl;
 import enums.RolUsuario;
 import model.Usuario;
+import ui.DashboardFrame;
 import ui.LoginFrame;
 
 public class App {
     public static void main(String[] args)  throws Exception {
-        SwingUtilities.invokeLater(LoginFrame::new);
+        // SwingUtilities.invokeLater(LoginFrame::new);
+        SwingUtilities.invokeLater(DashboardFrame::new);
 
         // UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 

@@ -8,6 +8,7 @@ import model.Usuario;
 public interface UsuarioDAO {
     boolean crear(Usuario usuario);
     Optional<Usuario> burcarPorId(int id);
+    Optional<Usuario> buscarPorCorreo(String correo);
     List<Usuario> listar();
     void actualizar(Usuario usuario);
     void eliminar(int id);
