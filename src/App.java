@@ -1,22 +1,27 @@
+import javax.swing.SwingUtilities;
+
 import dao.UsuarioDAO;
 import dao.impl.UsuarioDAOImpl;
 import enums.RolUsuario;
 import model.Usuario;
+import ui.LoginFrame;
 
 public class App {
-    public static void main(String[] args) {
-        UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+    public static void main(String[] args)  throws Exception {
+        SwingUtilities.invokeLater(LoginFrame::new);
 
-        Usuario usuario = new Usuario(
-            1, 
-            "Nahum", 
-            "Trinidad Venancio", 
-            "nahum.trinidadv@gmail.com", 
-            "prueba123", 
-            RolUsuario.ADMIN, 
-            true
-        );
-        usuarioDAO.crear(usuario);
+        // UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+
+        // Usuario usuario = new Usuario(
+        //     1, 
+        //     "Nahum", 
+        //     "Trinidad Venancio", 
+        //     "nahum.trinidadv@gmail.com", 
+        //     "prueba123", 
+        //     RolUsuario.ADMIN, 
+        //     true
+        // );
+        // usuarioDAO.crear(usuario);
         // try {
 
         // } catch (Exception e) {
