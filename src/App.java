@@ -1,20 +1,26 @@
-import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.Date;
-
-import config.ConnectionDB;
 import dao.UsuarioDAO;
 import dao.impl.UsuarioDAOImpl;
+import enums.RolUsuario;
+import model.Usuario;
 
 public class App {
     public static void main(String[] args) {
         UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
-        // Usuario usuario = 
-        try {
+        Usuario usuario = new Usuario(
+            1, 
+            "Nahum", 
+            "Trinidad Venancio", 
+            "nahum.trinidadv@gmail.com", 
+            "prueba123", 
+            RolUsuario.ADMIN, 
+            true
+        );
+        usuarioDAO.crear(usuario);
+        // try {
 
-        } catch (Exception e) {
-        }
+        // } catch (Exception e) {
+        // }
         // UsuarioATC atc = new UsuarioATC(1, "Ana", "Rojas", "ana@salud.com", "clave123", "ATC", "manana");
         // Desarrollador dev = new Desarrollador(2, "Luis", "Paz", "luis@salud.com", "clave123", "DEV", "Backend");
 

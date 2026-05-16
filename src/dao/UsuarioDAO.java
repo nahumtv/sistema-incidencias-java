@@ -1,0 +1,15 @@
+package dao;
+
+import java.util.List;
+import java.util.Optional;
+
+import model.Usuario;
+
+public interface UsuarioDAO {
+    boolean crear(Usuario usuario);
+    Optional<Usuario> burcarPorId(int id);
+    List<Usuario> listar();
+    void actualizar(Usuario usuario);
+    void eliminar(int id);
+
+}
