@@ -91,7 +91,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                     apellido = ?,
                     correo = ?,
                     contrasena = ?,
-                    rol = ?,
+                    rol = CAST(? AS rol_usuario),
                     activo = ?
                 WHERE id = ?
                 """;
