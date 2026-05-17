@@ -91,8 +91,12 @@ public class Usuario {
     }
 
     public void setContrasena(String contrasena) {
-        this.contrasena = Validador.textoObligatorio(contrasena, "contrasena");
-        Validador.longitudMinima(this.contrasena, 6, "contrasena");
+        try {
+            this.contrasena = Validador.textoObligatorio(contrasena, "contrasena");
+            Validador.longitudMinima(this.contrasena, 6, "contrasena");
+        } catch (Exception e) {
+            System.out.println("setContrasena " + e.getMessage());
+        }
     }
 
     public RolUsuario getRol() {
