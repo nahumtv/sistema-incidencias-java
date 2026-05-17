@@ -20,10 +20,6 @@ import javax.swing.UIManager;
 import model.Usuario;
 import service.AuthService;
 
-// import dao.UsuarioDAO;
-// import dao.impl.UsuarioDAOImpl;
-// import model.Usuario;
-
 public class LoginFrame extends JFrame {
     private JLabel lblTitulo;
     private JLabel lblCorreo;

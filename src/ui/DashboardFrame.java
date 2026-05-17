@@ -21,19 +21,19 @@ public class DashboardFrame extends JFrame {
     // Label user
     private JLabel lblBienvenida;
 
-    // public DashboardFrame(Usuario usuario) {
-    public DashboardFrame() {
+    public DashboardFrame(Usuario usuario) {
+    // public DashboardFrame() {
 
-        // this.usuario = usuario;
+        this.usuario = usuario;
 
         // lado izquierdo
         izqPanel = new JPanel();
         izqPanel.setLayout(new GridLayout(10, 1, 10, 10));
 
-        btnUsuarios = new JButton("Usuarios");
-        btnTickets = new JButton("Tickets");
-        btnIncidencias = new JButton("Incidencias");
-        btnReportes = new JButton("Reportes");
+        btnUsuarios = new JButton("Adminstrar Usuarios");
+        btnTickets = new JButton("Admistrar Tickets");
+        btnIncidencias = new JButton("Administrar Incidencias");
+        btnReportes = new JButton("Admiistrar Reportes");
         btnSalir = new JButton("Cerrar Sesión");
 
         izqPanel.add(btnUsuarios);
@@ -79,17 +79,13 @@ public class DashboardFrame extends JFrame {
     }
 
     private void abrirUsuarios() {
-        JFrame frame = new UsuarioFormFrame();
+        JFrame frame = new AdministrarUsuarioFrame();
 
         frame.setVisible(true);
     }
 
     private void abrirTickets() {
-
-        // JFrame frame =
-                // new TicketFormFrame(usuario);
-
-        // frame.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Módulo tickets próximamente");
     }
 
     private void abrirIncidencias() {
