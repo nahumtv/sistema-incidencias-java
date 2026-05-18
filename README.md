@@ -1,18 +1,48 @@
-## Getting Started
+## Configuración con Docker
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Sigue estos pasos para levantar la base de datos del proyecto con Docker.
 
-## Folder Structure
+### 1. Crear el archivo `.env`
 
-The workspace contains two folders by default, where:
+Copia el archivo base de variables de entorno:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+```bash
+cp env.initial .env
+```
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Si estás usando PowerShell, también puedes hacerlo así:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+```powershell
+Copy-Item env.initial .env
+```
 
-## Dependency Management
+### 2. Levantar los contenedores
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+```bash
+docker compose up -d
+```
+
+Esto levantará el contenedor `postgres-local` usando los valores definidos en `.env`.
+
+### 3. Ejecutar los scripts de base de datos
+
+Una vez que el contenedor esté arriba, ejecuta los scripts SQL en este orden:
+
+```bash
+docker exec -i postgres-local psql -U admin -d sgidb < database/001_create_tables.sql
+docker exec -i postgres-local psql -U admin -d sgidb < database/002_create_user_base.sql
+```
+
+### Variables por defecto
+
+El archivo `env.initial` trae esta configuración inicial:
+
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=sgidb
+DB_USER=admin
+DB_PASSWORD=password
+```
+
+Si necesitas cambiar el puerto, usuario, base de datos o contraseña, edita el archivo `.env` antes de ejecutar `docker compose up -d`.
